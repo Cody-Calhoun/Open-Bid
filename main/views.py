@@ -47,12 +47,15 @@ def con_login(request):
     return redirect(con_reg_form)
 
 def con_home(request):
-    con = Contractor.objects.get(id=request.session['id'])
+    contractor = Contractor.objects.get(id=request.session['id'])
     context = {
-        'contractor': con
+        'contractor': contractor
     }
     return render(request, 'contractor-home.html', context)
 
+def logout(request):
+    request.session.flush()
+    return redirect(index)
 
 
 

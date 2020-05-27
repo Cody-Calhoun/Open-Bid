@@ -11,6 +11,7 @@ urlpatterns = [
     path('cus_register', views.cus_register),
     path('cus_home', views.cus_home),
     path('cus_login', views.cus_login),
+    path('logout', views.logout),
 
 ]
 

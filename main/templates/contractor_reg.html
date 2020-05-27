@@ -47,7 +47,6 @@
     <div id="container">
         <h1>Welcome Contractor to Openbid.com</h1>
         <p>Please provide the information below.</p>
-        <a href="{% url 'logout'%}">logout</a>
         <div id="forms">
             <form action="/con_register" method="POST" id='reg'>
                 {% csrf_token %}

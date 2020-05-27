@@ -6,7 +6,7 @@ from datetime import datetime
 class User_manager(models.Manager):
     def con_validator(self, post_data):
         errors = {}
-        arr = User.objects.all()
+        arr = Contractor.objects.all()
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if len(post_data['bname']) < 2:
             errors['bname'] = 'Business name needs to be at least 2 characters.'
@@ -27,7 +27,7 @@ class User_manager(models.Manager):
 
     def cus_validator(self, post_data):
         errors = {}
-        arr = User.objects.all()
+        arr = Customer.objects.all()
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if len(post_data['fname']) < 2:
             errors['fname'] = 'First name needs to be at least 2 characters.'
