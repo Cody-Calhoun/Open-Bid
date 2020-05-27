@@ -12,6 +12,9 @@ urlpatterns = [
     path('cus_home', views.cus_home),
     path('cus_login', views.cus_login),
     path('logout', views.logout),
+    path('specialty_add', views.specialty_add),
+    path('cus_view_proj/<int:id>', views.project_info),
+    path('cus_view_bid/<int:id>', views.cus_view_bid),
 
 ]
 

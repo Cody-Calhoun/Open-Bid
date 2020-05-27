@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bid</title>
+</head>
+<body>
+    <header>
+        <h1>Hello {{customer.fname}}</h1>
+        <a href="/cus_view_proj/{{bid.project.id}}">Return to Project</a>
+        <a href="/logout">Logout</a>
+    </header>
+    <h1>This is a bid on the {{bid.project.title}} project</h1>
+
+    <p>Company bidding is {{bid.contractor.bname}}</p>
+    <p>Representative is {{bid.contractor.alias}}</p>
+    <p>Estimated price is ${{bid.price}}</p>
+    <p>Bid description/scope is {{bid.scope}}</p>
+
+
+</body>
+</html>

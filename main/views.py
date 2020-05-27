@@ -57,7 +57,11 @@ def logout(request):
     request.session.flush()
     return redirect(index)
 
-
+def specialty_add(request):
+    Speciality.objects.create(
+        title= request.POST['title']
+    )
+    return redirect(con_home)
 
 
 
@@ -107,4 +111,33 @@ def cus_home(request):
     context = {
         'customer': cus
     }
-    return render(request, 'customer-home.html', context)
+    return render(request, 'userpage.html', context)
+
+def submit_project(request):
+    cus = Customer.objects.get(id=request.session['id'])
+    proj = Project.objects.create(
+        title = request.POST('title'),
+        location = request.POST('location'),
+        measurements = request.POST('measurements'),
+        description = request.POST('description'),
+        customer = cus
+    )
+    return redirect(cus_home)
+
+def project_info(request, id):
+    cus = Customer.objects.get(id=request.session['id'])
+    proj = Projects.objects.get(id=id)
+    context = {
+        'project' : proj,
+        'cutomer': cus
+    }
+    return render(request, 'project_info.html', context)
+
+def cus_view_bid(request, id):
+    cus = Customer.objects.get(id=request.session['id'])
+    bid = Bid.objects.get(id=id)
+    context = {
+        'bid': bid,
+        'cutomer': cus
+    }
+    return render(request, 'view_bid.html', context)

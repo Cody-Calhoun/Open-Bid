@@ -74,7 +74,8 @@ class Customer(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Project(models.Model):
-    location = models.CharField(max_length = 20)
+    title = models.CharField(max_length = 50)
+    location = models.CharField(max_length = 50)
     measurements = models.TextField()
     description = models.TextField()
     customer = models.ForeignKey(Customer, related_name='projects', on_delete=models.CASCADE)
