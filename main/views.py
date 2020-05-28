@@ -157,6 +157,7 @@ def submit_project(request):
         location = request.POST['location'],
         measurements = request.POST['measurements'],
         description = request.POST['description'],
+        accepted = False,
         customer = cus
     )
     return redirect(cus_home)
@@ -178,3 +179,9 @@ def cus_view_bid(request, id):
         'cutomer': cus
     }
     return render(request, 'view_bid.html', context)
+
+def accept_bid(request, id):
+    bid = Bid.objects.get(id=id)
+    bid.accepted= True
+    bid.save()
+    return redirect(cus_home)
