@@ -59,7 +59,7 @@ def logout(request):
     return redirect(index)
 
 def specialty_add(request):
-    Speciality.objects.create(
+    Specialty.objects.create(
         title= request.POST['title']
     )
     return redirect(con_home)
@@ -97,6 +97,32 @@ def process_edit(request):
     bid.scope = request.POST['scope']
     bid.save()
     return redirect(con_home)
+
+def project_complete(request,proj_id):
+    project=Project.objects.get(id=proj_id)
+    bid=Bids.objects.get(id=project.bids.id)
+    contractor=Contractors.objects.get(id=bid.contractor.id)
+    customer=Customer.objects.get(id=project.customer.id)
+    context={
+        'project':project,
+        'bid':bid,
+        'contractor':contractor,
+        'customer':customer
+    }
+    return(request,"project_complete.html",context)
+
+def project_complete_review(request):
+    Review.objects.create(
+        rating= request.POST['rating'],
+        recommend=request.POST['recommend'],
+        comments=request.POST['comments'],
+        customer=request.POST['customer'],
+        contractor=request.POST['contractor'],
+        end_date=request.POST['end_date']
+    )
+    return redirect(cus_home)
+
+
 
     
 
@@ -185,3 +211,27 @@ def accept_bid(request, id):
     bid.accepted= True
     bid.save()
     return redirect(cus_home)
+
+def project_complete(request,proj_id):
+    project=Project.objects.get(id=proj_id)
+    bid=Bid.objects.get(id=project.bids.id)
+    contractor=Contractor.objects.get(id=bid.contractor.id)
+    customer=Customer.objects.get(id=project.customer.id)
+    context={
+        'project':project,
+        'bid':bid,
+        'contractor':contractor,
+        'customer':customer
+    }
+    return(request,"project_complete.html",context)
+
+def project_complete_review(request):
+    Review.objects.create(
+        rating= request.POST['rating'],
+        recommend=request.POST['recommend'],
+        comments=request.POST['comments'],
+        customer=request.POST['customer'],
+        contractor=request.POST['contractor'],
+        end_date=request.POST['end_date']
+        
+    )

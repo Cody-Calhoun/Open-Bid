@@ -102,5 +102,8 @@ class Review(models.Model):
     title = models.CharField(max_length = 20)
     customer = models.ForeignKey(Customer, related_name='reviews', on_delete=models.CASCADE)
     contractor = models.ForeignKey(Contractor, related_name='reviews', on_delete=models.CASCADE)
+    rating = models.CharField(max_length=20)
+    recommend = models.BooleanField()
+    end_date = models.DateField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

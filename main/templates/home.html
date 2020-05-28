@@ -1,4 +1,4 @@
-  {% load static %}
+  
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -8,10 +8,99 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/bootstrap-css.css' %}">
-    <title>LOGIN</title>
-  </head>
-  <body>
+    <title>Open Bid</title>
+    <!-- <link rel="stylesheet"  href="static/style.css"> -->
+</head>
+<body>
+<Style>
+    #container{
+        width: 970px;
+        height:500px; 
+        background-color: white;
+        background-image: img("images/main_img.png"  alt="barf");
+        margin: 0 auto;
+        }   
 
-<h2>place holder for home landing page</h2>
+        h1{
+            font-size: 24pt;
+            width: 30%;
+            display: inline-block;
+            
+        }
+        header{
+            color:white;
+            background-color:rgb(6, 33, 52);
+            padding-left: 10px;
+            padding-top: 5px;
+            
+        }
+        .teal{
+            color: rgb(27, 153, 232);
+            font-size: 22pt;
+            display: inline-block;
+            padding: 10px;
+        }
+        header ul{
+            display:inline-block;
+            color:white;
+            width: 750px;
+            padding-left: 190px;
+        }
+        header li{
+            display: inline-block;
+            color:white;
+            padding: 10px;
+        }
+
+        footer{
+            text-align:center;
+            height: 60px;
+            background-color: rgb(151, 5, 5);
+            padding: 5px;
+        }
+            footer ul{
+                display:block;
+                color: rgb(111, 156, 189);
+                        }
+            footer li{
+                display: inline-block;
+                color: rgb(111, 156, 189);
+                padding: 10px;
+            }       
+
+
+        </Style>
+
+
+<link rel="stylesheet"  href="static/style.css">
+</head>
+
+<body>
+
+<div id="container">
+<header>
+    <h1>Open BID</span> <h1>
+
+    <ul>
+        <li><a href="New Member"></a>New Member</li>
+        <li><a href="Customer"></a>Customer Login </li>
+        <li><a href="Contractor"></a>Contractor Login</li>    
+        
+    </ul>
+</header>
+<div id="spacer">
+    
+</div>
+
+<footer>
+    <ul>
+        <li><a href="about us"></a>About</li>
+        <li><a href="contact Open Bid"></a>Services</li>
+        <li><a href="Contractors Reviews"></a>Projects</li>    
+        
+    </ul>
+
+</footer>
+</div>
+
 </body>
-</html>
