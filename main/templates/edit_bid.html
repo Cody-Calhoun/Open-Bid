@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="process_edit" method="POST">
+            {% csrf_token %}
+            <label for="price">Estimate</label><br>
+            <input type="text" name="price" value="{{bid.price}}">
+            <label for="scope">Scope/Description</label><br>
+            <input type="text" name="scope" id="scope" value="{{bid.scope}}">
+            <input type="hidden" name="bid" value="{{bid.id}}">
+            <button>Submit</button>
+        </form>
+    </body>
+</html>

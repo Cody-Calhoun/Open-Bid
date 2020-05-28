@@ -13,8 +13,12 @@ urlpatterns = [
     path('cus_login', views.cus_login),
     path('logout', views.logout),
     path('specialty_add', views.specialty_add),
+    path('submit_project', views.submit_project),
     path('cus_view_proj/<int:id>', views.project_info),
     path('cus_view_bid/<int:id>', views.cus_view_bid),
+    path('bid_form/<int:id>', views.bid_form),
+    path('edit_bid/<int:id>', views.edit_bid),
+    path('process_edit/<int:id>', views.process_edit),
 
 ]
 

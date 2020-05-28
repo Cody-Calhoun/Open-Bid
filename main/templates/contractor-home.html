@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contractor Home</title>
-</head>
-<body>
-    <header>
-    Welcome, {{contractor.alias}}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contractor Home</title>
+    </head>
+    <body>
+        <header>
+            Welcome, {{contractor.alias}}
 
-    <a href="/logout">Log out</a>
-</header>
+            <a href="/logout">Log out</a>
+        </header>
+        <div id="open_proj">
+            <h3>{{contractor.alias}}, here are the available projects!</h3>
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Location</th>
+                    <th>Measurement</th>
+                    <th>Description</th>
+                    <th>Customer</th>
+                    <th>Action</th>
+                </tr>
+                    {% for project in projects%}
+                <tr>
+                    <td>{{project.title}}</td>
+                    <td>{{project.location}}</td>
+                    <td>{{project.measurement}}</td>
+                    <td>{{project.description}}</td>
+                    <td>{{project.customer}}</td>
+                    <td><a href="/bid_form/{{project.id}}">Place bid</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div id="mybids">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Project</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bid in contractor.bids.all%}
+                    <tr>
+                        <th scope="row">{{bid.id}}</th>
+                        <td>{{bid.project.title}}</td>
+                        <td>Placeholder for status</td>
+                        <td><a href="/edit_bid/{{bid.id}}"></a></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
 
-<h3>{{contractor.alias}}, information!</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id ultricies odio. Nulla purus odio, hendrerit at pharetra ac, ullamcorper vel ligula. Cras pellentesque velit sed vestibulum faucibus. Sed at facilisis magna. Vestibulum imperdiet, nibh nec aliquet mattis, magna nisi interdum tortor, at commodo nisl urna ut nisl. Fusce congue nec turpis in tempor. Maecenas nisl lorem, semper sit amet ullamcorper vitae, lobortis id purus. Donec nec nisi vestibulum, volutpat dolor non, viverra lectus. Nunc ut imperdiet sem.</p>
-<h5>My Specialties:</h5>
-{% for speciality in contractor.specialties.all %}
-<p>{{speciality.title}}</p>
-{% endfor %}
-<h6>Add Specialty Here:</h6>
-<form action="/specialty_add" method="POST">
-{% csrf_token %}
-<label class="mr-sm-2" for="inlineFormCustomSelect">Specialty</label>
-    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="specialty">
-        <option selected>Choose...</option>
-        <option value="General Contractor">General Contracting</option>
-        <option value="Landscaper">Landscaping</option>
-        <option value="Welder">Welding</option>
-        <option value="Mason">Masonry</option>
-        <option value="Concrete">Concrete Installation</option>
-    </select>
-</form>
 
-<H4>Completed Tasks</H4>
-<table>
-    <tr>
-        <th>Project Photos</th>
-        <th>Customer Comments</th>
-        <th>Rating</th>
-    </tr>
-
-</table>
-
-</body>
+        </div>
+    </body>
 </html>

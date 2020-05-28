@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Hello {{contractor.alias}}</h1>
+        <a href="/cus_home">Return to Homepage</a>
+        <a href="/logout">Logout</a>
+    </header>
+    <div id="proj">
+        <h1>This is the project info page!</h1>
+        
+        
+        <p>{{project.title}}</p> 
+        <p>{{project.location}}</p> 
+        <p>{{project.measurements}}</p> 
+        <p>{{project.description}}</p> 
+        <p>{{project.created_at}}</p> 
+    
+        <h2>Pictures?</h2>
+    </div>
+    <form action="place_bid" method="POST">
+        {% csrf_token %}
+        <label for="price">Estimate</label><br>
+        <input type="text" name="price">
+        <label for="scope">Scope/Description</label><br>
+        <input type="text" name="scope" id="scope">
+        <input type="hidden" name="project" value="{{project.id}}">
+        <input type="hidden" name="contractor" value="{{contractor.id}}">
+        <button>Submit</button>
+    </form>
+</body>
+</html>

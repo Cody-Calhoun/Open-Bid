@@ -50,6 +50,7 @@ def con_home(request):
     contractor = Contractor.objects.get(id=request.session['id'])
     context = {
         'contractor': contractor
+        'projects' : Project.objects.all()
     }
     return render(request, 'contractor-home.html', context)
 
@@ -62,6 +63,42 @@ def specialty_add(request):
         title= request.POST['title']
     )
     return redirect(con_home)
+
+def bid_form(request, id):
+    proj = Project.objects.get(id=id)
+    contractor = Contractor.objects.get(id=request.session['id'])
+    context = {
+        'project' : proj
+        'contractor' : contractor
+    }
+    return render(request, 'con_view_proj.html', context)
+
+def place_bid(request):
+    proj = Project.objects.get(id=request.POST['project'])
+    con = Contractor.objects.get(id=request.POST['contractor'])
+    bid = Bid.objects.create(
+        price = request.POST['price'],
+        scope = request.POST['scope'],
+        contractor = con
+        project = proj
+    )
+    return redirect(con_home)
+
+def edit_bid(request, id):
+    bid = Bid.objects.get(id=id)
+    context = {
+        'bid' : bid
+    }
+    return render(request, 'edit_bid.html', context)
+
+def process_edit(request):
+    bid = Bid.objects.get(id=request.POST['bid'])
+    bid.price = request.POST['price']
+    bid.scope = request.POST['scope']
+    bid.save()
+    return redirect(con_home)
+
+    
 
 
 
@@ -116,17 +153,17 @@ def cus_home(request):
 def submit_project(request):
     cus = Customer.objects.get(id=request.session['id'])
     proj = Project.objects.create(
-        title = request.POST('title'),
-        location = request.POST('location'),
-        measurements = request.POST('measurements'),
-        description = request.POST('description'),
+        title = request.POST['title'],
+        location = request.POST['location'],
+        measurements = request.POST['measurements'],
+        description = request.POST['description'],
         customer = cus
     )
     return redirect(cus_home)
 
 def project_info(request, id):
     cus = Customer.objects.get(id=request.session['id'])
-    proj = Projects.objects.get(id=id)
+    proj = Project.objects.get(id=id)
     context = {
         'project' : proj,
         'cutomer': cus
