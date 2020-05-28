@@ -6,7 +6,12 @@
         <title>Document</title>
     </head>
     <body>
-        <form action="process_edit" method="POST">
+        <header>
+            <h1>Hello {{contractor.alias}}</h1>
+            <a href="/con_home">Return to Homepage</a>
+            <a href="/logout">Logout</a>
+        </header>
+        <form action="/process_edit" method="POST">
             {% csrf_token %}
             <label for="price">Estimate</label><br>
             <input type="text" name="price" value="{{bid.price}}">

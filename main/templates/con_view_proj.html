@@ -8,7 +8,7 @@
 <body>
     <header>
         <h1>Hello {{contractor.alias}}</h1>
-        <a href="/cus_home">Return to Homepage</a>
+        <a href="/con_home">Return to Homepage</a>
         <a href="/logout">Logout</a>
     </header>
     <div id="proj">
@@ -23,12 +23,12 @@
     
         <h2>Pictures?</h2>
     </div>
-    <form action="place_bid" method="POST">
+    <form action="/place_bid" method="POST">
         {% csrf_token %}
         <label for="price">Estimate</label><br>
-        <input type="text" name="price">
+        <input type="text" name="price"><br>
         <label for="scope">Scope/Description</label><br>
-        <input type="text" name="scope" id="scope">
+        <input type="text" name="scope" id="scope"><br>
         <input type="hidden" name="project" value="{{project.id}}">
         <input type="hidden" name="contractor" value="{{contractor.id}}">
         <button>Submit</button>

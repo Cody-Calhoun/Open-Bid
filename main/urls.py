@@ -17,6 +17,7 @@ urlpatterns = [
     path('cus_view_proj/<int:id>', views.project_info),
     path('cus_view_bid/<int:id>', views.cus_view_bid),
     path('bid_form/<int:id>', views.bid_form),
+    path('place_bid', views.place_bid),
     path('edit_bid/<int:id>', views.edit_bid),
     path('process_edit/<int:id>', views.process_edit),
 

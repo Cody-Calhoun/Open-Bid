@@ -49,7 +49,7 @@ def con_login(request):
 def con_home(request):
     contractor = Contractor.objects.get(id=request.session['id'])
     context = {
-        'contractor': contractor
+        'contractor': contractor,
         'projects' : Project.objects.all()
     }
     return render(request, 'contractor-home.html', context)
@@ -68,7 +68,7 @@ def bid_form(request, id):
     proj = Project.objects.get(id=id)
     contractor = Contractor.objects.get(id=request.session['id'])
     context = {
-        'project' : proj
+        'project' : proj,
         'contractor' : contractor
     }
     return render(request, 'con_view_proj.html', context)
@@ -79,7 +79,7 @@ def place_bid(request):
     bid = Bid.objects.create(
         price = request.POST['price'],
         scope = request.POST['scope'],
-        contractor = con
+        contractor = con,
         project = proj
     )
     return redirect(con_home)
