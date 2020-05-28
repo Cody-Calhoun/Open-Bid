@@ -85,7 +85,7 @@ class Project(models.Model):
 class Bid(models.Model):
     price = models.IntegerField()
     scope = models.TextField()
-    accepted = models.BooleanField()
+    accepted = models.BooleanField(default=False)
     contractor = models.ForeignKey(Contractor, related_name='bids', on_delete=models.CASCADE)
     project = models.ForeignKey(Project, related_name="bids", on_delete=models.CASCADE)
     created_at = models.DateField(auto_now_add=True)

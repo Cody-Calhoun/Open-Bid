@@ -145,8 +145,11 @@ def cus_login(request):
 
 def cus_home(request):
     cus = Customer.objects.get(id=request.session['id'])
+    kola = Bid.objects.filter(accepted=True)
+    project_to_exclude = [this.project.id for this in kola]
     context = {
-        'customer': cus
+        'customer': cus,
+        'myopenproj' : Project.objects.filter(customer=cus).exclude(id__in=project_to_exclude)
     }
     return render(request, 'userpage.html', context)
 
