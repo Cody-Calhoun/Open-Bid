@@ -24,5 +24,6 @@ urlpatterns = [
     path('project_complete/<int:id>',views.project_complete),
     path('project_complete_review',views.project_complete_review),
     path('add_img',views.add_img),
+    path('con_view_bid<int:id>', views.con_view_bid),
 ]
 

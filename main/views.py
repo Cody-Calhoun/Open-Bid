@@ -4,7 +4,7 @@ import bcrypt
 from django.contrib import messages
 
 def index(request):
-    return render(request, 'login.html')
+    return render(request, 'home.html')
 
 def con_reg_form(request):
     return render(request, 'contractor_reg.html')
@@ -122,7 +122,12 @@ def project_complete_review(request):
     )
     return redirect(cus_home)
 
-
+def con_view_bid(request, id):
+    bid = Bid.objects.get(id=id)
+    context = {
+        "bid" : bid
+    }
+    return render(request, 'con_view_bid.html', context)
 
     
 
