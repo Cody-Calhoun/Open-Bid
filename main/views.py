@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Customer, Specialty, Contractor, Bid, Review, Project
+from .models import Customer, Specialty, Contractor, Bid, Review, Project, Proj_imgage
 import bcrypt
 from django.contrib import messages
 
@@ -186,7 +186,6 @@ def submit_project(request):
         location = request.POST['location'],
         measurements = request.POST['measurements'],
         description = request.POST['description'],
-        accepted = False,
         customer = cus
     )
     return redirect(cus_home)
@@ -199,6 +198,14 @@ def project_info(request, id):
         'cutomer': cus
     }
     return render(request, 'project_info.html', context)
+
+def add_img(request):
+    proj = Project.objects.get(id=request.POST['proj'])
+    pic = Proj_imgage.objects.create(
+        image = request.FILES['image'],
+        project = proj
+    )
+    return redirect(project_info, proj.id)
 
 def cus_view_bid(request, id):
     cus = Customer.objects.get(id=request.session['id'])

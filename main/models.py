@@ -1,6 +1,7 @@
 from django.db import models
 import re
 from datetime import datetime
+from django.db.models.fields.files import ImageField
 
 
 class User_manager(models.Manager):
@@ -107,3 +108,8 @@ class Review(models.Model):
     end_date = models.DateField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class Proj_imgage(models.Model):
+    image = models.ImageField()
+    project = models.ForeignKey(Project, related_name='images', on_delete=models.CASCADE)
+    uploaded_at = models.DateTimeField(auto_now_add=True)

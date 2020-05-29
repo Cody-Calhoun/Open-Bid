@@ -23,6 +23,6 @@ urlpatterns = [
     path('accept_bid/<int:id>', views.accept_bid),
     path('project_complete/<int:id>',views.project_complete),
     path('project_complete_review',views.project_complete_review),
-
+    path('add_img',views.add_img),
 ]
 
