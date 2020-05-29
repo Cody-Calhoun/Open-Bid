@@ -15,7 +15,7 @@
 <title>UserPage</title>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">OpenBid.com</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -56,28 +56,17 @@
   </header>
 <h1>Customer Page:</h1>
 
-<ul class="list-group">
-    <li class="list-group-item">First Name: {{customer.fname}}</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+<ul class="list-group col-3">
+  <li class="list-group-item"><b> First Name: </b>{{customer.fname}}</li>
+  <li class="list-group-item"><b>Last Name:</b> {{customer.lname}}</li>
+  <li class="list-group-item"><b>City: </b>{{customer.city}}</li>
+  <li class="list-group-item"><b>State: </b>{{customer.state}}</li>
+  <li class="list-group-item"><b>Zip Code: </b>{{customer.zipcode}}</li>
+  <li class="list-group-item"><b>Email: </b>{{customer.email}} </li>
 </ul>
-    <h3>Customer Information:</h3>
-    First Name: {{customer.fname}} <br>
-    Last Name: {{customer.lname}} <br>
-    City: {{customer.city}} <br>
-    State: {{customer.state}} <br>
-    Zip Code: {{customer.zipcode}} <br>
-    Email: {{customer.email}} <br>
-    
-    <br>
-    
-    <h4>Submit Project</h4>
-    <form action="/submit_project" method="POST">
-    {% csrf_token %}
-        <div class="form-group row">
-            <label for="projects" class="col-1 col-form-label">Project</label> 
+
+<br>
+
             <div class="col-5">
             <input id="projects" name="title" placeholder="Project " type="text" class="form-control" required="required">
             </div>
@@ -122,20 +111,19 @@
             </tr>
             </thead>
             <tbody>
-            {% for job in customer.projects.all %}
-            {% if job.accepted == False %}
-            <tr>
-                <th scope="row">{{job.id}}</th>
-                <td>{{job.title}}</td>
-                <td>{{job.measurements}}</td>
-                <td>{{job.created_at}}</td>
-                <td><a href="/cus_view_proj/{{job.id}}">View Project</a></td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-            </tbody>
+              {% for job in myopenproj %}
+              <tr>
+                  <th scope="row">{{job.id}}</th>
+                  <td>{{job.title}}</td>
+                  <td>{{job.measurements}}</td>
+                  <td>{{job.created_at}}</td>
+                  <td><a href="/cus_view_proj/{{job.id}}">View Project</a></td>
+              </tr>
+              {% endfor %}
+              </tbody>
             </div>
         </div>
+    </table>
     <h3>Projects in Progress</h3>
     <table class="table table-sm">
         <div class="row">
