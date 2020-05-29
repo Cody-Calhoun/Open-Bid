@@ -67,9 +67,11 @@ def specialty_add(request):
 def bid_form(request, id):
     proj = Project.objects.get(id=id)
     contractor = Contractor.objects.get(id=request.session['id'])
+    bid = Bid.objects.filter(contractor=contractor)[::-1]
     context = {
         'project' : proj,
-        'contractor' : contractor
+        'contractor' : contractor,
+        'bids' : bid
     }
     return render(request, 'con_view_proj.html', context)
 
@@ -122,12 +124,12 @@ def project_complete_review(request):
     )
     return redirect(cus_home)
 
-def con_view_bid(request, id):
-    bid = Bid.objects.get(id=id)
-    context = {
-        "bid" : bid
-    }
-    return render(request, 'con_view_bid.html', context)
+# def con_view_bid(request, id):
+#     bid = Bid.objects.get(id=id)
+#     context = {
+#         "bid" : bid
+#     }
+#     return render(request, 'bid_form.html', context)
 
     
 
@@ -246,7 +248,6 @@ def project_complete_review(request):
         recommend=request.POST['recommend'],
         comments=request.POST['comments'],
         customer=request.POST['customer'],
-        contractor=request.POST['contractor'],
-        end_date=request.POST['end_date']
-        
+        contractor=request.POST['contractor']
     )
+        # Need to add in updating status of the Project if that is required

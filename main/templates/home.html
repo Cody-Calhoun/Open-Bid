@@ -1,109 +1,43 @@
-  
-  <!DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     {% load static %}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/bootstrap-css.css' %}">
-  
+    <link rel="stylesheet" href="{% static 'css/home-style.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <title>Open Bid</title>
-    <!-- <link rel="stylesheet"  href="static/style.css"> -->
-</head>
-<body>
-<Style>
-    #container{
-        width: 970px;
-        height:500px; 
-        background-color: white;
-        background-image: img("images/main_img.png"  alt="barf");
-        margin: 0 auto;
-        }   
+  </head>
+  <body>
+    <div class="container-fluid wrapper">
+      <header>
+        <h1>Open <span>BID</span></h1>
 
-        h1{
-            font-size: 24pt;
-            width: 30%;
-            display: inline-block;
-            
-        }
-        header{
-            color:white;
-            background-color:rgb(6, 33, 52);
-            padding-left: 10px;
-            padding-top: 5px;
-            
-        }
-        .teal{
-            color: rgb(27, 153, 232);
-            font-size: 22pt;
-            display: inline-block;
-            padding: 10px;
-        }
-        header ul{
-            display:inline-block;
-            color:white;
-            width: 750px;
-            padding-left: 190px;
-        }
-        header li{
-            display: inline-block;
-            color:white;
-            padding: 10px;
-        }
-
-        footer{
-            text-align:center;
-            height: 60px;
-            background-color: rgb(151, 5, 5);
-            padding: 5px;
-        }
-            footer ul{
-                display:block;
-                color: rgb(111, 156, 189);
-                        }
-            footer li{
-                display: inline-block;
-                color: rgb(111, 156, 189);
-                padding: 10px;
-            }       
-
-
-        </Style>
-
-
-<link rel="stylesheet"  href="static/style.css">
-</head>
-
-<body>
-
-<div id="container">
-<header>
-    <h1>Open <span>BID</span> <h1>
-
-    <ul>
-        <li><a href="New Member"></a>New Member</li>
-        <li><a href="Customer"></a>Customer Login </li>
-        <li><a href="Contractor"></a>Contractor Login</li>    
+        <ul>
+          <li><a href="/customer_reg_login">New/Existing Customer Login</a></li>
+          <li><a href="/contractor_reg_login">New/Existing Contractor Login</a></li>
+        </ul>
+      </header>
+      <div id="big">
+      <div class="mainContent">
         
-    </ul>
-</header>
-<div id="mainContent">
-    <img src="{% static 'images/constructor-functions.jpg'%}">
-    
-</div>
+      </div>
+    </div>
 
-<footer>
-    <ul>
-        <li><a href="about us"></a>About</li>
-        <li><a href="contact Open Bid"></a>Services</li>
-        <li><a href="Contractors Reviews"></a>Projects</li>    
-        
-    </ul>
-
-</footer>
-</div>
-
-</body>
+      <footer>
+        <ul>
+          <li><a href="about us"></a>About</li>
+          <li><a href="contact Open Bid"></a>Services</li>
+          <li><a href="Contractors Reviews"></a>Projects</li>
+        </ul>
+      </footer>
+    </div>
+  </body>
+</html>

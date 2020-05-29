@@ -25,11 +25,13 @@
     }
     #info{
       width: 40%;
+      margin-top: 10px;
       padding: 10px;
       display: inline-block;
     }
     #images{
       width: 50%;
+      margin-top: 10px;
       height: 500px;
       padding: 10px;
       margin-left: 10px;
@@ -41,6 +43,31 @@
       width: 100%;
       display: inline-block;
       margin: 1%;
+    }
+    #bid, #bidholder{
+      width: 40%;
+      margin: 15px;
+      padding: 15px;
+      display: inline-block;
+      vertical-align: top;
+    }
+    #bidholder{
+      padding: 0;
+      height: 350px;
+      overflow: scroll;
+    }
+    #bid, #mybid{
+      border: 1px solid black;
+    }
+    #mybid{
+      width: 100%;
+      padding: 15px;
+      display: block;
+      margin-bottom: 2px;
+    }
+    #scope{
+      width: 90%;
+      height: 100px;
     }
 </style>
 </head>
@@ -94,16 +121,38 @@
     <img src="{{img.image.url}}" >
     {% endfor %}
   </div>
-    <form action="/place_bid" method="POST">
-        {% csrf_token %}
-        <label for="price">Estimate</label><br>
-        <input type="text" name="price"><br>
-        <label for="scope">Scope/Description</label><br>
-        <input type="text" name="scope" id="scope"><br>
-        <input type="hidden" name="project" value="{{project.id}}">
-        <input type="hidden" name="contractor" value="{{contractor.id}}">
-        <button>Submit</button>
-    </form>
+        <div id="bidholder">
+  {% for bid in bids %}
+          {% if bid.project == project%}
+        <div id="mybid">
+              <h3>My bid on {{bid.project.title}}:</h3>
+
+              <p><b>Bid submitted on:</b> {{bid.created_at}}</p>
+              <p><b>Estimate Total:</b> {{bid.price}}</p>
+              <p><b>Bid details:</b> {{bid.scope}}</p>
+              {% if bid.accepted == True %}
+              <p><b>Bid Status:</b> Accepted</p>
+              {% else  %}
+              <p><b>Bid Status:</b> Pending</p>
+              {% endif %}
+        </div><hr>
+        {%endif%}
+  {% endfor %}
+        </div>
+       
+        <form action="/place_bid" method="POST" id="bid">
+          {% csrf_token %}
+          <h3> Place your bid here </h3><hr>
+          <label for="price">Estimate Total</label><br>
+          <input type="text" name="price"><br>
+          <label for="scope">Scope/Description</label><br>
+          <textarea type="text" name="scope" id="scope"></textarea><br>
+          <input type="hidden" name="project" value="{{project.id}}">
+          <input type="hidden" name="contractor" value="{{contractor.id}}">
+          <button>Submit</button>
+        </form>
+       
+        
   </div>
 
   <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -117,6 +166,5 @@
   // Get the current year for the copyright
   $('#year').text(new Date().getFullYear());
 </script>
-
 </body>
 </html>

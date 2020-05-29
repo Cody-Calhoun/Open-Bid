@@ -22,8 +22,8 @@ class User_manager(models.Manager):
             errors['password'] = 'Password needs to be at least 8 characters.'
         if len(post_data['city']) < 4:
             errors['city'] = 'Please provide full name of city.'
-        if len(post_data['state']) < 4:
-            errors['state'] = 'Please provide full name of state.'
+        if len(post_data['state']) != 2
+            errors['state'] = 'Please provide standard state abbreviation'
         return errors
 
     def cus_validator(self, post_data):
@@ -43,8 +43,8 @@ class User_manager(models.Manager):
             errors['password'] = 'Password needs to be at least 8 characters.'
         if len(post_data['city']) < 4:
             errors['city'] = 'Please provide full name of city.'
-        if len(post_data['state']) < 4:
-            errors['state'] = 'Please provide full name of state.'
+        if len(post_data['state']) != 2:
+            errors['state'] = 'Please provide standard state abbreviation.'
         return errors
 
 
@@ -89,7 +89,7 @@ class Bid(models.Model):
     accepted = models.BooleanField(default=False)
     contractor = models.ForeignKey(Contractor, related_name='bids', on_delete=models.CASCADE)
     project = models.ForeignKey(Project, related_name="bids", on_delete=models.CASCADE)
-    created_at = models.DateField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 class Specialty(models.Model):
@@ -105,6 +105,7 @@ class Review(models.Model):
     contractor = models.ForeignKey(Contractor, related_name='reviews', on_delete=models.CASCADE)
     rating = models.CharField(max_length=20)
     recommend = models.BooleanField()
+    comments = models.TextField()
     end_date = models.DateField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
